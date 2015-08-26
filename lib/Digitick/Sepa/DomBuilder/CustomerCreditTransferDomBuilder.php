@@ -97,7 +97,7 @@ class CustomerCreditTransferDomBuilder extends BaseDomBuilder
         $debtor->appendChild($this->createElement('Nm', $paymentInformation->getOriginName()));
 
 
-        if($dbtr_ctry!=""&&$dbtr_ctry!=null)
+        if($cdtr_crty!=""&&$cdtr_crty!=null)
         {
 
             $debtorCtry = $debtor->appendChild($this->createElement('PstlAdr'));
@@ -119,7 +119,7 @@ class CustomerCreditTransferDomBuilder extends BaseDomBuilder
         $financialInstitutionId = $this->createElement('FinInstnId');
         $financialInstitutionId->appendChild($this->createElement('BIC', $paymentInformation->getOriginAgentBIC()));
 
-        if($cdtr_crty!=""&&$cdtr_crty!=null)
+        if($dbtr_ctry!=""&&$dbtr_ctry!=null)
         {
 
             $financialInstitutionAdr = $financialInstitutionId->appendChild($this->createElement('PstlAdr'));
