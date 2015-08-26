@@ -92,6 +92,9 @@ class CustomerCreditTransferDomBuilder extends BaseDomBuilder
         $cdtr_crty = $paymentInformation->getCreditorCtry();
         $dbtr_ctry = $paymentInformation->getDebtorCtry();
 
+        var_dump($cdtr_crty.PHP_EOL);
+        var_dump($dbtr_ctry.PHP_EOL);
+
         $this->currentPayment->appendChild($this->createElement('ReqdExctnDt', $paymentInformation->getDueDate()));
         $debtor = $this->createElement('Dbtr');
         $debtor->appendChild($this->createElement('Nm', $paymentInformation->getOriginName()));
