@@ -140,14 +140,14 @@ class PaymentInformation
      *
      * @var array
      */
-    protected $creditorAddress;
+    protected $creditorCtry;
 
     /**
      * Address Details of the Account to Debit
      *
      * @var array
      */
-    protected $debtorAddress;
+    protected $debtorCtry;
 
     /**
      * @param string $id
@@ -446,35 +446,35 @@ class PaymentInformation
     }
 
     /**
-     * @param array $creditorAddress
+     * @param array $creditorCtry
      */
-    public function setCreditorAddress($creditorAddress)
+    public function setCreditorCtry($creditorCtry)
     {
-        $this->creditorAddress = $creditorAddress;
+        $this->creditorCtry = $creditorCtry;
     }
 
     /**
      * @return array
      */
-    public function getCreditorAddress()
+    public function getCreditorCtry()
     {
-        return strtoupper($this->creditorAddress);
+        return strtoupper($this->creditorCtry);
     }
 
     /**
-     * @param array $creditorAddress
+     * @param array $creditorCtry
      */
-    public function setDebtorAddress($debtorAddress)
+    public function setDebtorCtry($debtorCtry)
     {
 
-        $this->debtorAddress = $debtorAddress;
+        $this->debtorCtry = $debtorCtry;
     }
 
     /**
      * @return array
      */
-    public function getDebtorAddress()
+    public function getDebtorCtry()
     {
-        return strtoupper($this->debtorAddress);
+        return strtoupper($this->debtorCtry);
     }
 }
