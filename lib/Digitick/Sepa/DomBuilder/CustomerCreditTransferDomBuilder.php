@@ -92,6 +92,10 @@ class CustomerCreditTransferDomBuilder extends BaseDomBuilder
         $this->currentPayment->appendChild($this->createElement('ReqdExctnDt', $paymentInformation->getDueDate()));
         $debtor = $this->createElement('Dbtr');
         $debtor->appendChild($this->createElement('Nm', $paymentInformation->getOriginName()));
+            $debtorAddress = $debtor->appendChild($this->createElement('PstlAdr'));
+            $debtorAddress->appendChild($this->createElement('Ctry', $paymentInformation->getDebtorAddress()));
+
+
         $this->currentPayment->appendChild($debtor);
 
         $debtorAccount = $this->createElement('DbtrAcct');
@@ -154,6 +158,8 @@ class CustomerCreditTransferDomBuilder extends BaseDomBuilder
         // Creditor 2.79
         $creditor = $this->createElement('Cdtr');
         $creditor->appendChild($this->createElement('Nm', $transactionInformation->getCreditorName()));
+            $creditorAddress = $creditor->appendChild($this->createElement('PstlAdr'));
+            $creditorAddress->appendChild($this->createElement('Ctry', $paymentInformation->getCreditorAddress()));
         $CdtTrfTxInf->appendChild($creditor);
 
         // CreditorAccount 2.80

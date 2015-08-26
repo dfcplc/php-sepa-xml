@@ -136,6 +136,19 @@ class PaymentInformation
     protected $batchBooking = null;
 
     /**
+     * Address Details of the Account to Credit
+     *
+     * @var array
+     */
+    protected $creditorAddress;
+
+    /**
+     * Address Details of the Account to Debit
+     *
+     * @var array
+     */
+    protected $debtorAddress;
+    /**
      * @param string $id
      * @param string $originAccountIBAN This is your IBAN
      * @param string $originAgentBIC This is your BIC
@@ -429,5 +442,38 @@ class PaymentInformation
     public function getBatchBooking()
     {
         return $this->batchBooking;
+    }
+
+    /**
+     * @param array $creditorAddress
+     */
+    public function setCreditorAddress($creditorAddress)
+    {
+        $this->creditorAddress = $creditorAddress;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCreditorAddress()
+    {
+        return $this->creditorAddress;
+    }
+
+    /**
+     * @param array $creditorAddress
+     */
+    public function setDebtorAddress($debtorAddress)
+    {
+        
+        $this->debtorAddress = $debtorAddress;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDebtorAddress()
+    {
+        return $this->debtorAddress;
     }
 }
