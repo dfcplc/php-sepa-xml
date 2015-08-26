@@ -88,14 +88,22 @@ class CustomerCreditTransferDomBuilder extends BaseDomBuilder
             $localInstrument->appendChild($this->createElement('Cd', $paymentInformation->getLocalInstrumentCode()));
             $this->currentPayment->appendChild($localInstrument);
         }
+        
+        $cdtr_crty = $paymentInformation->getCreditorCtry()
+        $dbtr_ctry = $paymentInformation->getDebtorCtry();
 
         $this->currentPayment->appendChild($this->createElement('ReqdExctnDt', $paymentInformation->getDueDate()));
         $debtor = $this->createElement('Dbtr');
         $debtor->appendChild($this->createElement('Nm', $paymentInformation->getOriginName()));
+
+
+        if($dbtr_ctry!=""&&$dbtr_ctry!=null)
+        {
+
             $debtorCtry = $debtor->appendChild($this->createElement('PstlAdr'));
             $debtorCtry->appendChild($this->createElement('Ctry', $paymentInformation->getDebtorCtry()));
 
-
+        }
         $this->currentPayment->appendChild($debtor);
 
         $debtorAccount = $this->createElement('DbtrAcct');
@@ -110,8 +118,14 @@ class CustomerCreditTransferDomBuilder extends BaseDomBuilder
         $debtorAgent = $this->createElement('DbtrAgt');
         $financialInstitutionId = $this->createElement('FinInstnId');
         $financialInstitutionId->appendChild($this->createElement('BIC', $paymentInformation->getOriginAgentBIC()));
+
+        if($cdtr_crty!=""&&$cdtr_crty!=null)
+        {
+
             $financialInstitutionAdr = $financialInstitutionId->appendChild($this->createElement('PstlAdr'));
             $financialInstitutionAdr->appendChild($this->createElement('Ctry', $paymentInformation->getDebtorCtry()));
+        
+        }
         $debtorAgent->appendChild($financialInstitutionId);
         $this->currentPayment->appendChild($debtorAgent);
 
@@ -150,11 +164,20 @@ class CustomerCreditTransferDomBuilder extends BaseDomBuilder
 
         //Creditor Agent 2.77
         if ($transactionInformation->getBic()) {
+
+            $cdtr_crty = $transactionInformation->getCreditorCtry()
+            $dbtr_ctry = $transactionInformation->getDebtorCtry();
+
+
             $creditorAgent = $this->createElement('CdtrAgt');
             $financialInstitution = $this->createElement('FinInstnId');
             $financialInstitution->appendChild($this->createElement('BIC', $transactionInformation->getBic()));
+            if($dbtr_ctry!=""&&$dbtr_ctry!=null)
+            {
                 $financialInstitutionAdr = $financialInstitution->appendChild($this->createElement('PstlAdr'));
-                $financialInstitutionAdr->appendChild($this->createElement('Ctry', $transactionInformation->getDebtorCtry()));
+                $financialInstitutionAdr->appendChild($this->createElement('Ctry', $dbtr_ctry));
+                
+            }
             $creditorAgent->appendChild($financialInstitution);
             $CdtTrfTxInf->appendChild($creditorAgent);
         }
@@ -162,8 +185,15 @@ class CustomerCreditTransferDomBuilder extends BaseDomBuilder
         // Creditor 2.79
         $creditor = $this->createElement('Cdtr');
         $creditor->appendChild($this->createElement('Nm', $transactionInformation->getCreditorName()));
+
+        if($cdtr_crty!=""&&$cdtr_crty!=null)
+        {
+
             $creditorCtry = $creditor->appendChild($this->createElement('PstlAdr'));
-            $creditorCtry->appendChild($this->createElement('Ctry', $transactionInformation->getCreditorCtry()));
+            $creditorCtry->appendChild($this->createElement('Ctry', $cdtr_crty));
+            
+        }
+
         $CdtTrfTxInf->appendChild($creditor);
 
         // CreditorAccount 2.80
