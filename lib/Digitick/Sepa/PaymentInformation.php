@@ -148,7 +148,7 @@ class PaymentInformation
      * @var array
      */
     protected $debtorAddress;
-    
+
     /**
      * @param string $id
      * @param string $originAccountIBAN This is your IBAN
@@ -458,7 +458,7 @@ class PaymentInformation
      */
     public function getCreditorAddress()
     {
-        return $this->creditorAddress;
+        return strtoupper($this->creditorAddress);
     }
 
     /**
@@ -475,6 +475,6 @@ class PaymentInformation
      */
     public function getDebtorAddress()
     {
-        return $this->debtorAddress;
+        return strtoupper($this->debtorAddress);
     }
 }

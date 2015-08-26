@@ -236,7 +236,7 @@ class BaseTransferInformation implements TransferInformationInterface
      */
     public function getCreditorAddress()
     {
-        return $this->creditorAddress;
+        return strtoupper($this->creditorAddress);
     }
 
     /**
@@ -253,6 +253,6 @@ class BaseTransferInformation implements TransferInformationInterface
      */
     public function getDebtorAddress()
     {
-        return $this->debtorAddress;
+        return strtoupper($this->debtorAddress);
     }
 }
