@@ -77,6 +77,20 @@ class BaseTransferInformation implements TransferInformationInterface
     protected $remittanceInformation;
 
     /**
+     * Address Details of the Account to Credit
+     *
+     * @var array
+     */
+    protected $creditorAddress;
+
+    /**
+     * Address Details of the Account to Debit
+     *
+     * @var array
+     */
+    protected $debtorAddress;
+
+    /**
      * @param string $amount
      * @param string $iban
      * @param string $name
@@ -209,4 +223,36 @@ class BaseTransferInformation implements TransferInformationInterface
         return $this->remittanceInformation;
     }
 
+    /**
+     * @param array $creditorAddress
+     */
+    public function setCreditorAddress($creditorAddress)
+    {
+        $this->creditorAddress = $creditorAddress;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCreditorAddress()
+    {
+        return $this->creditorAddress;
+    }
+
+    /**
+     * @param array $creditorAddress
+     */
+    public function setDebtorAddress($debtorAddress)
+    {
+        
+        $this->debtorAddress = $debtorAddress;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDebtorAddress()
+    {
+        return $this->debtorAddress;
+    }
 }

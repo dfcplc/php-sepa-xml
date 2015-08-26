@@ -159,7 +159,7 @@ class CustomerCreditTransferDomBuilder extends BaseDomBuilder
         $creditor = $this->createElement('Cdtr');
         $creditor->appendChild($this->createElement('Nm', $transactionInformation->getCreditorName()));
             $creditorAddress = $creditor->appendChild($this->createElement('PstlAdr'));
-            $creditorAddress->appendChild($this->createElement('Ctry', $paymentInformation->getCreditorAddress()));
+            $creditorAddress->appendChild($this->createElement('Ctry', $transactionInformation->getCreditorAddress()));
         $CdtTrfTxInf->appendChild($creditor);
 
         // CreditorAccount 2.80

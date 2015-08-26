@@ -148,6 +148,7 @@ class PaymentInformation
      * @var array
      */
     protected $debtorAddress;
+    
     /**
      * @param string $id
      * @param string $originAccountIBAN This is your IBAN
@@ -465,7 +466,7 @@ class PaymentInformation
      */
     public function setDebtorAddress($debtorAddress)
     {
-        
+
         $this->debtorAddress = $debtorAddress;
     }
 
