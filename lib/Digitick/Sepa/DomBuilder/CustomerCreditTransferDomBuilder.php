@@ -88,8 +88,8 @@ class CustomerCreditTransferDomBuilder extends BaseDomBuilder
             $localInstrument->appendChild($this->createElement('Cd', $paymentInformation->getLocalInstrumentCode()));
             $this->currentPayment->appendChild($localInstrument);
         }
-        
-        $cdtr_crty = $paymentInformation->getCreditorCtry()
+
+        $cdtr_crty = $paymentInformation->getCreditorCtry();
         $dbtr_ctry = $paymentInformation->getDebtorCtry();
 
         $this->currentPayment->appendChild($this->createElement('ReqdExctnDt', $paymentInformation->getDueDate()));
@@ -165,7 +165,7 @@ class CustomerCreditTransferDomBuilder extends BaseDomBuilder
         //Creditor Agent 2.77
         if ($transactionInformation->getBic()) {
 
-            $cdtr_crty = $transactionInformation->getCreditorCtry()
+            $cdtr_crty = $transactionInformation->getCreditorCtry();
             $dbtr_ctry = $transactionInformation->getDebtorCtry();
 
 
